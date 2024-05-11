@@ -1,9 +1,16 @@
 -- Set intend
-intend = 2
+indent = 2
+
+-- Enable 24bit terminal colors
+vim.opt.termguicolors = true
 
 -- Set leader and local leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+
+-- Disable netrw for NvimTree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- Lazy.nvim - Package Manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -72,12 +79,23 @@ local plugs = {
     'mrcjkb/rustaceanvim',
     version = '^4', -- Recommended
     lazy = false, -- This plugin is already lazy
+  },
+  -- NvimTree
+  {
+    "nvim-tree/nvim-tree.lua"
   }
 }
 local opts  = {}
 
+-- Setup Plugins
 require("lazy").setup(plugs, opts)
 require("mason").setup()
+require("nvim-tree").setup({
+  view = {
+    width = 20,
+  }
+})
+
 
 -- Telescope local setop
 local builtin = require("telescope.builtin")
@@ -86,15 +104,22 @@ local builtin = require("telescope.builtin")
 vim.keymap.set('n', '<C-i>', builtin.find_files, {})
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 
+-- Nvim Tree Toggle (CHANGE THIS I USE SHIFT+- WHICH RESULTS IN "_" ON MY LAYOUT)
+vim.keymap.set({ "n", "c", "v", "t", "s", "o", "l"}, "_", "<cmd>:NvimTreeToggle<CR>")
+
 -- Telescope Grep keybinds
 vim.keymap.set('n', '<C-g>', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>lg', builtin.live_grep, {})
 
 -- Tabwidth, etc
-vim.cmd("set expandtab")
-vim.cmd("set shiftwidth=" .. intend)
-vim.cmd("set softtabstop=" .. intend)
-vim.cmd("set tabstop=" .. intend)
+vim.bo.expandtab = true
+vim.bo.shiftwidth = indent
+vim.bo.softtabstop = indent
+vim.bo.tabstop = indent
+vim.bo.autoindent = indent
 
 -- Set Clipboard as standard copy paste buffer
 vim.api.nvim_set_option("clipboard", "unnamed")
+
+-- Make it possible to exit with <Esc> from terminal mode
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
