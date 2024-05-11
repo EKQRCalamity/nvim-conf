@@ -12,6 +12,9 @@ vim.g.maplocalleader = "\\"
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Enable Line Numbers
+vim.cmd("set nu rnu")
+
 -- Lazy.nvim - Package Manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -105,7 +108,7 @@ vim.keymap.set('n', '<C-i>', builtin.find_files, {})
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 
 -- Nvim Tree Toggle (CHANGE THIS I USE SHIFT+- WHICH RESULTS IN "_" ON MY LAYOUT)
-vim.keymap.set({ "n", "c", "v", "t", "s", "o", "l"}, "_", "<cmd>:NvimTreeToggle<CR>")
+vim.keymap.set({ "n", "c", "v", "t", "s", "o", "l"}, "_", "<cmd>:NvimTreeToggle<CR>", {})
 
 -- Telescope Grep keybinds
 vim.keymap.set('n', '<C-g>', builtin.live_grep, {})
@@ -122,4 +125,8 @@ vim.bo.autoindent = indent
 vim.api.nvim_set_option("clipboard", "unnamed")
 
 -- Make it possible to exit with <Esc> from terminal mode
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {})
+
+-- Toggle Line Number Mode (nu! for absolute, rnu! for relative, both for hybrid)
+vim.keymap.set({"n", "c", "v", "s", "o", "l"}, "<M-i>", "<cmd>:set nu! rnu!<CR>", {})
+vim.keymap.set({"n", "c", "v", "s", "o", "l"}, "<M-r>", "<cmd>:set rnu!<CR>", {})
