@@ -17,12 +17,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugs = {
-  -- Colorscheme 
+   -- Colorscheme 
   -- Available: fluoromachine, nightfox, bamboo, poimandres, mellifluous, oldworld, moonfly, catppuccin, citruszest,
-  -- oh-lucy
+  -- oh-lucy, minimal, modus, everblush, evergarden
   -- nightfox (specify mode in function e.g. dayfox => colorschemes.nightfox("day") | blank = default nightfox)
-  -- bamboo (specify mode in function, multiplex/greener, light and vulgaris/default)
-  -- oh-lucy (to use evening specify in function e.g. colorschemes.oh_lucy("evening") else will use default)
+  -- bamboo (multiplex/greener, light and vulgaris/default)
+  -- oh-lucy (evening and default)
+  -- minimal (base16 and default)
+  -- modus (operandi (light) and default/vivendi (dark))
+  -- evergarden (high, low and medium/default)
   colorschemes.mellifluous(),
   -- Telescope
   {

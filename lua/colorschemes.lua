@@ -143,7 +143,7 @@ end
 
 MOD.catppuccin = function(mode)
   local flavour = mode or "auto"
-  
+
   if (mode == "frappe")
   then
     flavour = "frappe"
@@ -224,6 +224,66 @@ MOD.oh_lucy = function(mode)
     priority = 1000,
     config = function()
       vim.cmd.colorscheme(mode)
+    end
+  }
+end
+
+MOD.minimal = function(mode)
+  local flavour = mode or "minimal"
+  if (mode == "base16")
+  then
+    flavour = "minimal-base16"
+  end
+  return {
+    "Yazeed1s/minimal.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme(flavour)
+    end
+  }
+end
+
+MOD.modus = function(mode)
+  local flavour
+  if (mode == "operandi")
+  then
+    flavour = "modus-operandi"
+  else
+    flavour = "modus-vivendi"
+  end
+  return {
+    "ishan9299/modus-theme-vim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme(flavour)
+    end
+  }
+end
+
+MOD.everblush = function()
+  return {
+    "Everblush/nvim",
+    name = "everblush",
+    config = function()
+      vim.cmd.colorscheme("everblush")
+    end
+  }
+end
+
+MOD.evergarden = function(contrast)
+  if (contrast ~= "high" and contrast ~= "low" and contrast ~= "medium")
+  then
+  contrast = "medium"
+  end
+  return {
+    "comfysage/evergarden",
+    opts = {
+      contrast_dark = contrast
+    },
+    config = function()
+      vim.cmd.colorscheme("evergarden")
     end
   }
 end
