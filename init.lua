@@ -1,5 +1,6 @@
 -- Setup base nvim configurations
 require "configs/nvimconf"
+local colorschemes = require "colorschemes"
 
 -- Lazy.nvim - Package Manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -16,50 +17,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugs = {
-  -- Colorscheme
-  {
-    -- Uncomment lines for colorscheme configuration
-    --'maxmx03/fluoromachine.nvim',
-    --'olivercederborg/poimandres.nvim',
-    'ramojus/mellifluous.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function ()
-      --[[
-      require("fluoromachine").setup {
-    	  glow = true,
-        brightness = 1,
-        theme = 'retrowave'
-      }
-      
-      
-      require("poimandres").setup {
-        bold_vert_split = false, -- use bold vertical separators
-        dim_nc_background = false, -- dim 'non-current' window backgrounds
-        disable_background = false, -- disable background
-        disable_float_background = false, -- disable background for floats
-        disable_italics = false, -- disable italics
-      }
-      ]]
-
-      require("mellifluous").setup({
-        plugins = {
-          cmp = true,
-          nvim_tree = {
-            enabled = true,
-            show_root = true,
-          },
-          telescope = {
-            enabled = true,
-          }
-        }
-      })
-
-      -- vim.cmd.colorscheme = "fluoromachine"
-      -- vim.cmd.colorscheme = "poimandres"
-      vim.cmd.colorscheme 'mellifluous'
-    end
-  },
+  -- Colorscheme 
+  -- Available: fluoromachine, nightfox, bamboo, poimandres, mellifluous, oldworld, moonfly, catppuccin, citruszest,
+  -- oh-lucy
+  -- nightfox (specify mode in function e.g. dayfox => colorschemes.nightfox("day") | blank = default nightfox)
+  -- bamboo (specify mode in function, multiplex/greener, light and vulgaris/default)
+  -- oh-lucy (to use evening specify in function e.g. colorschemes.oh_lucy("evening") else will use default)
+  colorschemes.mellifluous(),
   -- Telescope
   {
     'nvim-telescope/telescope-fzf-native.nvim',
@@ -139,13 +103,28 @@ local plugs = {
     "dcampos/nvim-snippy",
     "dcampos/cmp-snippy"
   },
+  -- Indent Blankline
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
   },
+  -- Lualine for status line
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" }
+  },
+  -- Start screen
+  {
+    "goolord/alpha-nvim",
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function ()
+      require'alpha'.setup(require'alpha.themes.dashboard'.config)
+    end
+  },
+  -- Nvim notify for beautiful notifications
+  {
+    "rcarriga/nvim-notify",
+    name = "notify"
   }
 }
 local opts  = {}
@@ -168,6 +147,9 @@ require("lualine").setup({
     theme = "palenight"
   }
 })
+
+-- Set vim notifications to use nvim notify
+vim.notify = require("notify")
 
 -- indent-blankline setup
 
