@@ -26,7 +26,7 @@ local plugs = {
   -- minimal (base16 and default)
   -- modus (operandi (light) and default/vivendi (dark))
   -- evergarden (high, low and medium/default)
-  colorschemes.fluoromachine(),
+  colorschemes.oh_lucy(),
   -- Telescope
   {
     'nvim-telescope/telescope-fzf-native.nvim',
@@ -103,8 +103,13 @@ local plugs = {
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
     "hrsh7th/nvim-cmp",
-    "dcampos/nvim-snippy",
-    "dcampos/cmp-snippy"
+  },
+  -- Lua snip, snippet manager
+  {
+    "L3MON4D3/LuaSnip",
+    version = "2.*",
+    build = "make install_jsregexp",
+    dependencies = { "rafamadriz/friendly-snippets" }
   },
   -- Indent Blankline
   {
@@ -128,6 +133,10 @@ local plugs = {
   {
     "rcarriga/nvim-notify",
     name = "notify"
+  },
+  -- None ls, community maintained child of null-ls
+  {
+    "nvimtools/none-ls.nvim"
   }
 }
 local opts  = {}
@@ -148,6 +157,25 @@ require("lualine").setup({
     disabled_filetypes = { 'NvimTree', 'NVimTree' },
     -- theme = "wombat",
     theme = "palenight"
+  }
+})
+
+require("luasnip.loaders.from_vscode").lazy_load()
+
+require("null-ls").setup({
+  sources = {
+    require("null-ls").builtins.formatting.stylua,
+    require("null-ls").builtins.completion.spell,
+    require("null-ls").builtins.completion.tags,
+    require("null-ls").builtins.completion.luasnip,
+    require("null-ls").builtins.diagnostics.codespell,
+    require("null-ls").builtins.diagnostics.djlint,
+    require("null-ls").builtins.diagnostics.golangci_lint,
+    require("null-ls").builtins.diagnostics.ktlint,
+    require("null-ls").builtins.formatting.dxfmt,
+    require("null-ls").builtins.formatting.uncrustify,
+    require("null-ls").builtins.diagnostics.todo_comments,
+    require("null-ls").builtins.diagnostics.trail_space
   }
 })
 
@@ -186,14 +214,10 @@ require("ibl").setup({
 
 local cmp = require("cmp")
 
-local snippy = require("snippy")
-
-snippy.setup({})
-
 require("cmp").setup({
   snippet = {
     expand = function(args)
-      snippy.expand_snippet(args.body)
+      require("luasnip").lsp_expand(args.body)
     end
   },
   window = {
@@ -208,7 +232,7 @@ require("cmp").setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'snippy' },
+    { name = 'luasnip' },
     { name = 'buffer' }
   })
 })
