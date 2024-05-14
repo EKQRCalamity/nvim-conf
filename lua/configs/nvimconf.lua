@@ -1,6 +1,10 @@
 -- Set intend
 local TABWIDTH = 2
 
+-- Change Cursor Color in insert mode
+-- And set normal mode to gui=reverse
+require("configs.animatecursor")
+
 -- Enable 24bit terminal colors
 vim.opt.termguicolors = true
 
@@ -27,7 +31,7 @@ vim.opt.expandtab = true
 vim.wo.cursorline = true
 
 -- Set Clipboard as standard copy paste buffer
-vim.api.nvim_set_option("clipboard", "unnamed")
+vim.api.nvim_set_option("clipboard", "unnamedplus")
 
 -- Enable LSP Diagnostic updates in insert mode
 vim.diagnostic.config({update_in_insert = true})

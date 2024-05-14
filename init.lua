@@ -17,7 +17,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugs = {
-   -- Colorscheme 
+  -- Colorscheme 
   -- Available: fluoromachine, nightfox, bamboo, poimandres, mellifluous, oldworld, moonfly, catppuccin, citruszest,
   -- oh-lucy, minimal, modus, everblush, evergarden
   -- nightfox (specify mode in function e.g. dayfox => colorschemes.nightfox("day") | blank = default nightfox)
@@ -26,7 +26,7 @@ local plugs = {
   -- minimal (base16 and default)
   -- modus (operandi (light) and default/vivendi (dark))
   -- evergarden (high, low and medium/default)
-  colorschemes.mellifluous(),
+  colorschemes.fluoromachine(),
   -- Telescope
   {
     'nvim-telescope/telescope-fzf-native.nvim',
@@ -219,7 +219,16 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local servers = {
   gopls = {},
   biome = {},
-  lua_ls = {},
+  lua_ls = {
+    Lua = {
+      diagnostics = {
+        -- Add vim to recognized globals
+        globals = {
+          'vim'
+        }
+      }
+    }
+  },
   volar = {},
   rust_analyzer = {}
 }
