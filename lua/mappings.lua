@@ -1,3 +1,4 @@
+
 -- Telescope local setop
 local builtin = require("telescope.builtin")
 
@@ -22,3 +23,12 @@ vim.keymap.set({"n", "c", "v", "s", "o", "l"}, "<M-r>", "<cmd>:set rnu!<CR>", { 
 -- Use Tab for cycling through buffers
 vim.keymap.set({"n", "c"}, "<Tab>", "<cmd>:BufferLineCycleNext<CR>", { noremap = true })
 vim.keymap.set({"n", "c"}, "<S-Tab>", "<cmd>:BufferLineCyclePrev<CR>", { noremap = true })
+
+-- Make it possible to change buffer width/height more Easily
+-- Vertical resizing
+vim.keymap.set("n", "<leader>v>", "<cmd>vertical resize +10<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>v<", "<cmd>vertical resize -10<CR>", { noremap = true, silent = true })
+
+-- Horizontal resizing
+vim.keymap.set("n", "<leader>h>", "<cmd>resize +10<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>h<", "<cmd>resize -10<CR>", { noremap = true, silent = true })
