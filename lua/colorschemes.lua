@@ -1,5 +1,35 @@
 local MOD = {}
 
+MOD.colorschemes = function ()
+  return {
+    {
+      "maxmx03/fluoromachine.nvim",
+      config = function()
+        require("fluoromachine").setup({
+          glow = true,
+          brightness = 0.3,
+          theme = "retrowave",
+        })
+      end
+    },
+    "olivercederborg/poimandres.nvim",
+    "dgox16/oldworld.nvim",
+    "EdenEast/nightfox.nvim",
+    "ribru17/bamboo.nvim",
+    "bluz71/vim-moonfly-colors",
+    "zootedb0t/citruszest.nvim",
+    "ray-x/aurora",
+    "glepnir/zephyr-nvim",
+    "Yazeed1s/oh-lucy.nvim",
+    "Yazeed1s/minimal.nvim",
+    "ishan9299/modus-theme-vim",
+    "comfysage/evergarden",
+    { "catppuccin/nvim", name = "catppuccin" },
+    { "Everblush/nvim", name = "everblush" },
+  }
+end
+
+
 MOD.fluoromachine = function()
   return {
     "maxmx03/fluoromachine.nvim",
