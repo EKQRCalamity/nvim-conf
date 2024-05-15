@@ -2,8 +2,11 @@
 local TABWIDTH = 2
 
 -- Change Cursor Color in insert mode
--- And set normal mode to gui=reverse
 require("configs.animatecursor")
+
+-- Change Cursor in normal mode to reverse
+vim.cmd("highlight Cursor gui=reverse")
+vim.cmd("highlight lCursor gui=reverse")
 
 -- Enable 24bit terminal colors
 vim.opt.termguicolors = true

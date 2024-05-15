@@ -1,5 +1,5 @@
-local startColor = "#ffff3f"
-local endColor   = "#06d6a0"
+local startColor = "#FDB833"
+local endColor   = "#1789FC"
 
 local timer  = vim.loop.new_timer()
 local factor = 0.0
@@ -29,9 +29,6 @@ local function update_cursor()
 
   vim.cmd(string.format("highlight CursorInsert guifg=NONE guibg=%s", color))
   vim.cmd(string.format("highlight lCursorInsert guifg=NONE guibg=%s", color))
-  -- Change Cursor in normal mode to reverse
-  vim.cmd("highlight Cursor gui=reverse")
-  vim.cmd("highlight lCursor gui=reverse")
 
   if factor >= 1 then
     reverse = true
