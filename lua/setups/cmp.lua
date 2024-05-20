@@ -1,38 +1,44 @@
 local CMP = {}
 
--- LOAD Lua Snip before CMP
+-- LOAD Lua Snip OR lsp-zero before CMP
 CMP.load = function()
   return {
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/nvim-cmp",
+    {'hrsh7th/nvim-cmp'},
   }
 end
 
 CMP.setup = function()
-  require("cmp").setup({
+  local cmp = require('cmp')
+
+  cmp.setup({
+    sources = {
+      {name = 'nvim_lsp'},
+    },
+    mapping = {
+      ['<Tab>'] = cmp.mapping.confirm({select = true}),
+      ['<Esc>'] = cmp.mapping.abort(),
+      ['<Up>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
+      ['<Down>'] = cmp.mapping.select_next_item({behavior = 'select'}),
+      ['<C-p>'] = cmp.mapping(function()
+        if cmp.visible() then
+          cmp.select_prev_item({behavior = 'insert'})
+        else
+          cmp.complete()
+        end
+      end),
+      ['<C-n>'] = cmp.mapping(function()
+        if cmp.visible() then
+          cmp.select_next_item({behavior = 'insert'})
+        else
+          cmp.complete()
+        end
+      end),
+    },
     snippet = {
       expand = function(args)
-        require("luasnip").lsp_expand(args.body)
-      end
+        require('luasnip').lsp_expand(args.body)
+      end,
     },
-    window = {
-      completion = require("cmp").config.window.bordered()
-    },
-    mapping = require("cmp").mapping.preset.insert({
-      ['<C-b>'] = require("cmp").mapping.scroll_docs(-4),
-      ['<C-f>'] = require("cmp").mapping.scroll_docs(4),
-      ['<C-Space>'] = require("cmp").mapping.complete(),
-      ['<C-e>'] = require("cmp").mapping.abort(),
-      ['<CR>'] = require("cmp").mapping.confirm({ select = true }),
-    }),
-    sources = require("cmp").config.sources({
-      { name = "nvim-lsp" },
-      { name = "luasnip" },
-      { name = "buffer" }
-    })
   })
 end
 

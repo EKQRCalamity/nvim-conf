@@ -29,21 +29,16 @@ MASON.load = function()
 end
 
 MASON.setup = function()
+
   require("mason").setup({})
   local mason_lsp = require("mason-lspconfig")
   mason_lsp.setup({
-    ensure_installed = vim.tbl_keys(servers)
-  })
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
-  mason_lsp.setup_handlers({
-    function(servername)
-      require("lspconfig")[servername].setup({
-        capabilities = capabilities,
-        settings = servers[servername]
-      })
-    end,
+    ensure_installed = vim.tbl_keys(servers),
+    handlers = {
+      function(server_name)
+        require("lspconfig")[server_name].setup(servers[server_name])
+      end,
+    }
   })
 end
 

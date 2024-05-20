@@ -26,6 +26,16 @@ MOD.colorschemes = function ()
     "comfysage/evergarden",
     { "catppuccin/nvim", name = "catppuccin" },
     { "Everblush/nvim", name = "everblush" },
+    {
+      "scottmckendry/cyberdream.nvim",
+      lazy = false,
+      priority = 1000,
+      config = function()
+        require("cyberdream").setup({
+          transparent = true,
+        })
+      end
+    }
   }
 end
 

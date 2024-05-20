@@ -2,7 +2,7 @@ local IBL = {}
 
 IBL.load = function()
   return {
-    "lukas-reineke/indent-blankline.nvim",
+    "EKQRCalamity/indent-blankline.nvim",
     main = "ibl",
   }
 end
