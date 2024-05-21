@@ -38,3 +38,9 @@ vim.api.nvim_set_option("clipboard", "unnamedplus")
 
 -- Enable LSP Diagnostic updates in insert mode
 vim.diagnostic.config({update_in_insert = true})
+
+-- Set tab width to 4 for js, html, vue, ts files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "vue", "js", "ts", "typescript", "javascript", "html", "css" },
+  command = "setlocal shiftwidth=4 tabstop=4"
+})

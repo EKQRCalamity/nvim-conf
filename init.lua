@@ -61,8 +61,6 @@ local plugs = {
   telescope.load(),
   -- Tree Sitter
   treesitter.load(),
-  -- Mason
-  mason.load(),
   -- DAP UI
   dap_ui.load(),
   -- Emmet - For Web Dev
@@ -77,6 +75,8 @@ local plugs = {
   bufferline.load(),
   -- LSP Zero - Easier setup of cmp and luasnip
   lsp_zero.load(),
+  -- Mason
+  mason.load(),
   -- Vim CMP - Autocompletion
   cmp.load(),
   -- Lua snip, snippet manager

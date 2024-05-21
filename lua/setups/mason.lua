@@ -3,16 +3,7 @@ local MASON = {}
 local servers = {
   gopls = {},
   biome = {},
-  lua_ls = {
-    Lua = {
-      diagnostics = {
-        -- Add vim to recognized globals
-        globals = {
-          'vim'
-        }
-      }
-    }
-  },
+  lua_ls = {},
   volar = {},
   rust_analyzer = {}
 }
@@ -34,11 +25,7 @@ MASON.setup = function()
   local mason_lsp = require("mason-lspconfig")
   mason_lsp.setup({
     ensure_installed = vim.tbl_keys(servers),
-    handlers = {
-      function(server_name)
-        require("lspconfig")[server_name].setup(servers[server_name])
-      end,
-    }
+    handlers = { lsp_zero.default_setup }
   })
 end
 
