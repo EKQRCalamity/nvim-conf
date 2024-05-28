@@ -18,11 +18,14 @@ local notify = require "setups/nvim-notify"
 local nvimtree = require "setups/nvim-tree"
 local surround = require "setups/surround"
 local telescope = require "setups/telescope"
+local tima = require "setups/tima"
 local treesitter = require "setups/treesitter"
 local vim_closer = require "setups/vim-closer"
 local vim_cool = require "setups/vim-cool"
 local waka = require "setups/wakatime"
 local wardrobe = require "setups/wardrobe"
+
+tima.setup("right")
 
 -- Lazy.nvim - Package Manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -104,7 +107,6 @@ local opts  = {}
 -- For development
 -- Uncomment wardrobe.load() in lazy setup and change the wardrobe.lua setup file accordingly!
 
-
 -- Setup Plugins
 require("lazy").setup(plugs, opts)
 
@@ -131,7 +133,6 @@ null_ls.setup()
 notify.setup()
 
 indent_blankline.setup()
-
 
 -- Require mappings for custom keybindings - Has to be included AFTER telescope was setup.
 require "mappings"
