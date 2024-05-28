@@ -8,6 +8,7 @@ MOD.colorschemes = function ()
         require("fluoromachine").setup({
           glow = true,
           brightness = 0.3,
+          transparent = true,
           theme = "retrowave",
         })
       end
