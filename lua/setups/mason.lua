@@ -2,10 +2,13 @@ local MASON = {}
 
 local servers = {
   gopls = {},
-  biome = {},
   lua_ls = {},
   volar = {},
-  rust_analyzer = {}
+  rust_analyzer = {},
+  harper_ls = {},
+  tsserver = {},
+  zls = {},
+  omnisharp = {},
 }
 
 MASON.load = function()
@@ -20,7 +23,6 @@ MASON.load = function()
 end
 
 MASON.setup = function()
-
   require("mason").setup({})
   local mason_lsp = require("mason-lspconfig")
   mason_lsp.setup({
