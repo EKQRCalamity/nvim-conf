@@ -12,7 +12,7 @@ end
 
 ZERO.setup = function()
   _G.lsp_zero = require("lsp-zero")
-  _G.lsp_zero.on_attach(function(_client, bufnr)
+  _G.lsp_zero.on_attach(function(_, bufnr)
     _G.lsp_zero.default_keymaps({bufnr = bufnr})
   end)
   _G.lsp_zero.configure("lua_ls", {
