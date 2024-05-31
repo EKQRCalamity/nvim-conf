@@ -5,7 +5,7 @@ ALPHA.add_quote = function(arr)
     {
       [[        "Estoy sufriendo las penas del        ]],
       [[    infierno sin ni siquiera haber muerto."   ]],
-      [[       - Orhan Pamuk, Me llamo Rojo -         ]]
+      [[        - Orhan Pamuk, Me llamo Rojo -        ]]
     },
     {
       [[    "Immersing oneself in the problems of     ]],
@@ -50,11 +50,11 @@ ALPHA.load = function ()
     config = function ()
       local dashboard = require("alpha.themes.dashboard");
       dashboard.section.header.val = ALPHA.add_quote({
-        [[    ⠀⠀⠀⠀⠀⠀⠀⢀⣤⡶⢶⣦⡀ ]],
-        [[⠀  ⠀⠀⣴⡿⠟⠷⠆⣠⠋⠀⠀⠀⢸⣿ ]],
-        [[⠀  ⠀⠀⣿⡄⠀⠀⠀⠈⠀⠀⠀⠀⣾⡿ ]],
-        [[  ⠀⠀⠀⠹⣿⣦⡀⠀⠀⠀⠀⢀⣾⣿ ]],
-        [[⠀  ⠀⠀⠀⠈⠻⣿⣷⣦⣀⣠⣾⡿ ]],
+        [[    ⠀⠀⠀⠀⠀⠀⠀⢀⣤⡶⢶⣦⡀                          ]],
+        [[⠀  ⠀⠀⣴⡿⠟⠷⠆⣠⠋⠀⠀⠀⢸⣿                          ]],
+        [[⠀  ⠀⠀⣿⡄⠀⠀⠀⠈⠀⠀⠀⠀⣾⡿                          ]],
+        [[  ⠀⠀⠀⠹⣿⣦⡀⠀⠀⠀⠀⢀⣾⣿                           ]],
+        [[⠀  ⠀⠀⠀⠈⠻⣿⣷⣦⣀⣠⣾⡿                            ]],
         [[  ⠀⠀⠀⠀⠀⠀⠀⠉⠻⢿⡿⠟                             ]],
         [[⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⡟⠀⠀⠀⢠⠏⡆⠀⠀⠀⠀⠀⢀⣀⣤⣤⣤⣀⡀             ]],
         [[⠀⠀⠀  ⠀⠀⡟⢦⡀⠇⠀⠀⣀⠞⠀⠀⠘⡀⢀⡠⠚⣉⠤⠂⠀⠀⠀⠈⠙⢦⡀           ]],

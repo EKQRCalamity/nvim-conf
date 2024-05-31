@@ -9,7 +9,7 @@ local servers = {
   tsserver = {},
   zls = {},
   omnisharp = {},
-  phpactor = {},
+  -- phpactor = {},
   intelephense = {}
 }
 
@@ -25,7 +25,9 @@ MASON.load = function()
 end
 
 MASON.setup = function()
-  require("mason").setup({})
+  require("mason").setup({
+    PATH = "prepend"
+  })
   local mason_lsp = require("mason-lspconfig")
   mason_lsp.setup({
     ensure_installed = vim.tbl_keys(servers),

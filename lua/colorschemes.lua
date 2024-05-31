@@ -15,11 +15,32 @@ MOD.colorschemes = function ()
     },
     "olivercederborg/poimandres.nvim",
     "dgox16/oldworld.nvim",
-    "EdenEast/nightfox.nvim",
-    "ribru17/bamboo.nvim",
+    {
+      "EdenEast/nightfox.nvim",
+      config = function()
+        require("nightfox").setup({
+          options = {
+            transparent = true
+          }
+        })
+      end
+    },
+    {
+      "ribru17/bamboo.nvim",
+      config = function()
+        require("bamboo").setup({
+          transparent = true,
+        })
+      end
+    },
     "bluz71/vim-moonfly-colors",
     "zootedb0t/citruszest.nvim",
-    "ray-x/aurora",
+    {
+      "ray-x/aurora",
+      config = function()
+        vim.g.aurora_transparent = true
+      end
+    },
     "glepnir/zephyr-nvim",
     "Yazeed1s/oh-lucy.nvim",
     "Yazeed1s/minimal.nvim",
