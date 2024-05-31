@@ -26,6 +26,26 @@ ZERO.setup = function()
       }
     }
   })
+  _G.lsp_zero.configure("intelephense", {
+    filetypes = { "php" },
+    root_dir = require("lspconfig").util.root_pattern(".git"),
+  })
+  _G.lsp_zero.configure("phpactor", {
+    cmd = { "phpactor", "language-server", "-vvv"},
+    filetypes = { "php" },
+    root_dir = require("lspconfig").util.root_pattern(".git"),
+    init_options = {
+      ["language_server_worse_reflection.inlay_hints.enable"] = true,
+      ["language_server_worse_reflection.inlay_hints.params"] = true,
+      ["language_server_worse_reflection.inlay_hints.types"] = true,
+      ["language_server_configuration.auto_config"] = true,
+      ["code_transform.import_globals"] = true,--[[
+      ["language_server_phpstan.enabled"] = true,
+      ["language_server_phpstan.level"] = 7,
+      ["language_server_phpstan.bin"] = "phpstan",
+      ]]
+    },
+  })
 end
 
 return ZERO

@@ -9,6 +9,8 @@ local servers = {
   tsserver = {},
   zls = {},
   omnisharp = {},
+  phpactor = {},
+  intelephense = {}
 }
 
 MASON.load = function()
