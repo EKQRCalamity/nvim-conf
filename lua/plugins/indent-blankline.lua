@@ -1,13 +1,13 @@
-local IBL = {}
+local INDENTBLANKLINE = {}
 
-IBL.load = function()
+INDENTBLANKLINE.load = function()
   return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
   }
 end
 
-IBL.setup = function()
+INDENTBLANKLINE.setup = function()
   local highlight = {
     "RainbowRed",
     "RainbowYellow",
@@ -34,7 +34,6 @@ IBL.setup = function()
       highlight = highlight,
     }
   })
-
 end
 
-return IBL
+return INDENTBLANKLINE

@@ -1,6 +1,6 @@
-local TIMA = {}
+local TIMAR = {}
 
-TIMA.setup = function(posX, posY, border)
+TIMAR.setup = function(posX, posY, border)
   local function get_time()
     return { os.date("%H:%M:%S") }
   end
@@ -11,7 +11,7 @@ TIMA.setup = function(posX, posY, border)
   end
 
 
-  local buf, _ = TIMA.setup_window(posX, posY, border)
+  local buf, _ = TIMAR.setup_window(posX, posY, border)
 
   update_time(buf)
 
@@ -21,7 +21,7 @@ TIMA.setup = function(posX, posY, border)
   end))
 end
 
-TIMA.setup_window = function (posX, posY, border)
+TIMAR.setup_window = function (posX, posY, border)
   local buf = vim.api.nvim_create_buf(false, true)
   local width = 8
   local height = 1
@@ -57,4 +57,4 @@ TIMA.setup_window = function (posX, posY, border)
   return buf, win
 end
 
-return TIMA;
+return TIMAR;
