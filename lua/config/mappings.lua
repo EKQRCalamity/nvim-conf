@@ -19,11 +19,11 @@ vim.api.nvim_set_keymap("n", "<C-w>s", "<C-w>s<cmd>wincmd w<CR>", { noremap = tr
 vim.api.nvim_set_keymap("n", "<C-w>v", "<C-w>v<cmd>wincmd w<CR>", { noremap = true, silent = true })
 
 -- Use <Tab> or <Shift-Tab> for cycling forward and backward through open buffers (bufferline.nvim)
-vim.keymap.set({"n", "t"}, "<Tab>", "<cmd>:BufferLineCycleNext<CR>", { noremap = true })
-vim.keymap.set({"n", "t"}, "<S-Tab>", "<cmd>:BufferLineCyclePrev<CR>", { noremap = true })
+vim.keymap.set("n", "<Tab>", "<cmd>:BufferLineCycleNext<CR>", { noremap = true })
+vim.keymap.set("n", "<S-Tab>", "<cmd>:BufferLineCyclePrev<CR>", { noremap = true })
 
 -- Set <_> (for me its Shift + -) as open/close nvimtree
-vim.keymap.set({"n","v","t","s","o","l"}, "_", "<cmd>:NvimTreeToggle<CR>", { noremap = true })
+vim.keymap.set({"n","v","s","o","l"}, "_", "<cmd>:NvimTreeToggle<CR>", { noremap = true })
 
 -- Telescope local setop
 local builtin = require("telescope.builtin")
