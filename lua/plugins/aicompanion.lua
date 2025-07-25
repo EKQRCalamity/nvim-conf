@@ -7,11 +7,22 @@ AICOMPANION.load = function()
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    opts = {
-      
-    },
-    config = true
+    opts = {}
   }
+end
+
+AICOMPANION.setup = function()
+  require("codecompanion").setup({
+    strategies = {
+      chat = {
+        adapter = "copilot",
+        model = "claude-sonnet-4-20250514",
+      },
+      inline = {
+        adapter = "copilot",
+      },
+    },
+  })
 end
 
 return AICOMPANION

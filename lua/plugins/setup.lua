@@ -1,4 +1,5 @@
 local aicompanion = require "plugins/aicompanion"
+local ai_plugins = require "plugins/aicomp-plugins"
 local autopair = require "plugins/autopair"
 local bufferline = require "plugins/bufferline"
 local emmet = require "plugins/emmet"
@@ -18,6 +19,9 @@ local timar = require "plugins/timar"
 local lazy_opts = {}
 
 local lazy_plugins = {
+  ai_plugins.markdown.load(),
+  ai_plugins.diff.load(),
+  ai_plugins.img_clip.load(),
   aicompanion.load(),
   autopair.load(),
   bufferline.load(),
@@ -29,7 +33,7 @@ local lazy_plugins = {
   treesitter.load(),
   vimcool.load(),
   wardrobe.load(),
-  --whichkey.load(),
+  whichkey.load(),
   lualine.load(),
   luasnip.load(),
   lspsetup.load(),
@@ -37,10 +41,12 @@ local lazy_plugins = {
 
 require("lazy").setup(lazy_plugins, lazy_opts)
 
+
 lspsetup.setup()
 
 treesitter.update()
 
+aicompanion.setup()
 lualine.setup()
 indent_blankline.setup()
 nvimtree.setup()
